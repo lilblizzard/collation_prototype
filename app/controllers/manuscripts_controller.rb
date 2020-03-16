@@ -14,7 +14,7 @@ class ManuscriptsController < ApplicationController
 
   # GET /manuscripts/new
   def new
-    @manuscript = Manuscript.new
+    @manuscript = current_account.manuscripts.build
   end
 
   # GET /manuscripts/1/edit
@@ -24,7 +24,7 @@ class ManuscriptsController < ApplicationController
   # POST /manuscripts
   # POST /manuscripts.json
   def create
-    @manuscript = Manuscript.new(manuscript_params)
+    @manuscript = current_account.manuscripts.build(manuscript_params)
 
     respond_to do |format|
       if @manuscript.save
