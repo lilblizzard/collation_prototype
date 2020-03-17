@@ -62,13 +62,14 @@ class ManuscriptsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_manuscript
-      @manuscript = Manuscript.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def manuscript_params
-      params.require(:manuscript).permit(:shelfmark, :quire_count)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_manuscript
+    @manuscript = Manuscript.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def manuscript_params
+    params.require(:manuscript).permit(:shelfmark, :quire_count)
+  end
 end

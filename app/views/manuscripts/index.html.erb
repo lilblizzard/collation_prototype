@@ -1,12 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<div class="p-5 container">
+<div class="container">
   <div class="row">
     <div class="col">
       <h2><b>Manuscripts</b></h2>
     </div>
     <div class="col">
-      <%= link_to 'New Manuscript', new_manuscript_path, class: "btn btn-success float-right" %>
+      <% if account_signed_in? %>
+        <%= link_to 'New Manuscript', new_manuscript_path, class: "btn btn-success float-right" %>
+      <% else %>
+        <%= link_to 'Log In to Create a New Manuscript', new_account_session_path, class: "btn btn-success float-right" %>
+      <% end %>
     </div>
   </div>
 

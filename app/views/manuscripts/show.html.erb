@@ -1,14 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p>
+    <strong>Shelfmark:</strong>
+    <%= @manuscript.shelfmark %>
+  </p>
 
-<p>
-  <strong>Shelfmark:</strong>
-  <%= @manuscript.shelfmark %>
-</p>
-
-<p>
-  <strong>Quire count:</strong>
-  <%= @manuscript.quire_count %>
-</p>
-
-<%= link_to 'Edit', edit_manuscript_path(@manuscript) %> |
-<%= link_to 'Back', manuscripts_path %>
+  <p>
+    <strong>Quire count:</strong>
+    <%= @manuscript.quire_count %>
+  </p>
+  <p id="notice"><%= notice %></p>
+  <%= link_to 'New Quire', new_manuscript_quire_path(@manuscript), class: "btn btn-outline-success" %>
+  <%= link_to 'Edit', edit_manuscript_path(@manuscript) %> |
+  <%= link_to 'Back', manuscripts_path %>
+</div>
