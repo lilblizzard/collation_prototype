@@ -1,18 +1,34 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col">
       <strong>Shelfmark:</strong>
       <%= @manuscript.shelfmark %>
       <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(@manuscript), class: 'btn btn-warning' %>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-3">
+  <div class="row mt-2">
+    <div class="col">
       <strong>Quires:</strong>
       <%= @manuscript.quires.count %>
-      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
       <%= link_to 'New Quire', new_manuscript_quire_path(@manuscript), class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= render 'quire_table' %>
     </div>
   </div>
 </div>
