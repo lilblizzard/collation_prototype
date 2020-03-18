@@ -1,15 +1,18 @@
 <div class="container">
-  <p>
-    <strong>Shelfmark:</strong>
-    <%= @manuscript.shelfmark %>
-  </p>
+  <div class="row">
+    <div class="col-3">
+      <strong>Shelfmark:</strong>
+      <%= @manuscript.shelfmark %>
+      <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(@manuscript), class: 'btn btn-warning' %>
+    </div>
+  </div>
 
-  <p>
-    <strong>Quire count:</strong>
-    <%= @manuscript.quire_count %>
-  </p>
-  <p id="notice"><%= notice %></p>
-  <%= link_to 'New Quire', new_manuscript_quire_path(@manuscript), class: "btn btn-outline-success" %>
-  <%= link_to 'Edit', edit_manuscript_path(@manuscript) %> |
-  <%= link_to 'Back', manuscripts_path %>
+  <div class="row">
+    <div class="col-3">
+      <strong>Quires:</strong>
+      <%= @manuscript.quires.count %>
+      <p id="notice"><%= notice %></p>
+      <%= link_to 'New Quire', new_manuscript_quire_path(@manuscript), class: "btn btn-success" %>
+    </div>
+  </div>
 </div>
