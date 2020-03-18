@@ -1,0 +1,22 @@
+<%= form_with(model: @quire, url: manuscript_quires_path(@manuscript), local: true) do |form| %>
+  <% if manuscript.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manuscript.quire.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
+
+      <ul>
+        <% @manuscript.quire.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :leaf_count %>
+    <%= form.number_field :leaf_count, class: "form-control" %>
+  </div>
+
+  <div class="actions pt-2">
+    <%= form.submit 'Create Quire', class: "form-control btn btn-lg btn-primary btn-block" %>
+  </div>
+<% end %>
