@@ -25,23 +25,19 @@ class QuiresController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @quire.update(quire_params)
-        format.html { redirect_to @manuscript, notice: 'Quire was successfully updated.' }
-        format.json { render :'manuscripts/show', status: :ok, location: @quire }
-      else
-        format.html { render :edit }
-        format.json { render json: @quire.errors, status: :unprocessable_entity }
-      end
+    if @quire.update(quire_params)
+      flash[:success] = "Quire updated successfully."
+      redirect_to @quire.manuscript
+    else
+      flash[:danger] = "Something went wrong."
+      redirect_to edit_manuscript_quire_path(@manuscript)
     end
   end
 
   def destroy
     @quire.destroy
-    respond_to do |format|
-      format.html { redirect_to @manuscript, notice: 'Quire was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Quire deleted successfully."
+    redirect_to @quire.manuscript
   end
 
   private
