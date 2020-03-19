@@ -14,7 +14,7 @@
         <td><%= quire.id %></td>
         <td><%= quire.leaf_count %></td>
         <td>
-          <%= link_to '<i class="fas fa-eye"></i>'.html_safe, manuscript_quire_path(@manuscript), class: "btn btn-outline-success" %>
+          <%= link_to '<i class="fas fa-eye"></i>'.html_safe, manuscript_quire_path(@manuscript, quire), class: "btn btn-outline-success" %>
           <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_quire_path(@manuscript), class: "btn btn-outline-primary" %>
           <%= link_to '<i class="fas fa-trash"></i>'.html_safe, manuscript_quire_path(@manuscript), class: "btn btn-outline-danger", method: :delete, data: {confirm: 'Are you sure?'} %>
         </td>

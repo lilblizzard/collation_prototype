@@ -6,14 +6,14 @@ class QuiresController < ApplicationController
   end
 
   def new
-    @quire = Quire.new
+    @quire = @manuscript.quires.build
   end
 
   def edit
   end
 
   def create
-    @quire = @manuscript.quires.build(quire_params)
+    @quire = @manuscript.quires.build quire_params
 
     respond_to do |format|
       if @quire.save
