@@ -15,14 +15,12 @@ class QuiresController < ApplicationController
   def create
     @quire = @manuscript.quires.build quire_params
 
-    respond_to do |format|
-      if @quire.save
-        format.html { redirect_to @manuscript, notice: 'Quire was successfully created.'}
-        format.json { render :'manuscripts/show', status: :created, location: @quire}
-      else
-        format.html { render :'quires/new'}
-        format.json { render json: @quire.errors, status: :unprocessable_entity}
-      end
+    if @quire.save
+      flash[:success] = "Quire created successfully."
+      redirect_to @manuscript
+    else
+      flash[:danger] = "Something went wrong."
+      redirect_to new_manuscript_quire_path(@manuscript)
     end
   end
 
