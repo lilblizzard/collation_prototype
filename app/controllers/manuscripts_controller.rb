@@ -70,6 +70,6 @@ class ManuscriptsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def manuscript_params
-    params.require(:manuscript).permit(:shelfmark, :quire_count)
+    params.require(:manuscript).permit(:name, :shelfmark, :quire_count, :date)
   end
 end

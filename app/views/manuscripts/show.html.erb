@@ -7,9 +7,16 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <strong>Name:</strong>
+      <%= @manuscript.name %>
+      <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(@manuscript), class: 'btn btn-warning' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
       <strong>Shelfmark:</strong>
       <%= @manuscript.shelfmark %>
-      <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(@manuscript), class: 'btn btn-warning' %>
     </div>
   </div>
 

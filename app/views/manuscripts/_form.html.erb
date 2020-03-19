@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="field">
     <%= form.label :shelfmark %>
     <%= form.text_field :shelfmark, class: "form-control" %>
   </div>
@@ -19,6 +24,11 @@
   <div class="field">
     <%= form.label :quire_count %>
     <%= form.number_field :quire_count, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.number_field :date, class: "form-control" %>
   </div>
 
   <div class="actions pt-2">

@@ -5,12 +5,16 @@
     </div>
     <div class="col">
       <% if account_signed_in? %>
-        <%= link_to 'New Manuscript', new_manuscript_path, class: "btn btn-success float-right" %>
+        <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#newManuscriptModal">
+          New Manuscript
+        </button>
       <% else %>
         <%= link_to 'Log In to Create a New Manuscript', new_account_session_path, class: "btn btn-success float-right" %>
       <% end %>
     </div>
   </div>
+
+  <%= render 'new_manuscript_modal' %>
 
   <div class="table-wrapper">
     <table class="table table-hover">
@@ -37,37 +41,4 @@
       </tbody>
     </table>
   </div>
-</div>
-
-<div class="container">
-  <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newManuscriptModal">
-    New Manuscript
-  </button>
-
-  <!-- The Modal -->
-  <div class="modal" id="newManuscriptModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">New Manuscript</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <%= render 'form', manuscript: Manuscript.new %>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
 </div>
