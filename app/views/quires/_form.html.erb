@@ -1,5 +1,5 @@
 <%= form_with(model: @quire, url: manuscript_quires_path(@manuscript), local: true) do |form| %>
-  <% if manuscript.errors.any? %>
+  <% if @manuscript.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@manuscript.quire.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
 

@@ -49,7 +49,7 @@ class QuiresController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def quire_params
-    params.require(:quire).permit(:leaf_count)
+    params.permit(:leaf_count)
   end
 
   def set_manuscript
