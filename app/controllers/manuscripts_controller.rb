@@ -26,28 +26,24 @@ class ManuscriptsController < ApplicationController
   def create
     @manuscript = current_account.manuscripts.build(manuscript_params)
 
-    respond_to do |format|
-      if @manuscript.save
-        format.html { redirect_to @manuscript, notice: 'Manuscript was successfully created.' }
-        format.json { render :show, status: :created, location: @manuscript }
-      else
-        format.html { render :new }
-        format.json { render json: @manuscript.errors, status: :unprocessable_entity }
-      end
+    if @manuscript.save
+      flash[:success] = "Manuscript created successfully."
+      redirect_to @manuscript
+    else
+      flash[:danger]
+      redirect_to new_manuscript_path
     end
   end
 
   # PATCH/PUT /manuscripts/1
   # PATCH/PUT /manuscripts/1.json
   def update
-    respond_to do |format|
-      if @manuscript.update(manuscript_params)
-        format.html { redirect_to @manuscript, notice: 'Manuscript was successfully updated.' }
-        format.json { render :show, status: :ok, location: @manuscript }
-      else
-        format.html { render :edit }
-        format.json { render json: @manuscript.errors, status: :unprocessable_entity }
-      end
+    if @manuscript.update(manuscript_params)
+      flash[:success] = "Manuscript updated successfully."
+      redirect_to @manuscript
+    else
+      flash[:danger] = "Something went wrong..."
+      redirect_to edit_manuscript_path(@manuscript)
     end
   end
 
@@ -55,10 +51,8 @@ class ManuscriptsController < ApplicationController
   # DELETE /manuscripts/1.json
   def destroy
     @manuscript.destroy
-    respond_to do |format|
-      format.html { redirect_to manuscripts_url, notice: 'Manuscript was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Manuscript deleted successfully."
+      redirect_to manuscripts_url
   end
 
   private
