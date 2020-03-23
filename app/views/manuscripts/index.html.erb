@@ -5,9 +5,7 @@
     </div>
     <div class="col">
       <% if account_signed_in? %>
-        <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#newManuscriptModal">
-          New Manuscript
-        </button>
+        <%= link_to 'New Manuscript', "#", class: "btn btn-success float-right",  data: { toggle: "modal", target: "#newManuscriptModal" } %>
       <% else %>
         <%= link_to 'Log In to Create a New Manuscript', new_account_session_path, class: "btn btn-success float-right" %>
       <% end %>

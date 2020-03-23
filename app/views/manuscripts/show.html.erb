@@ -25,10 +25,7 @@
       <strong>Quires:</strong>
       <%= @manuscript.quires.count %>
       <p id="notice"><%= notice %></p>
-      <%# link_to 'New Quire', new_manuscript_quire_path(@manuscript), class: "btn btn-success" %>
-      <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#newQuireModal">
-        New Quire
-      </button>
+      <%= link_to 'New Quire', "#", class: "btn btn-success float-right",  data: { toggle: "modal", target: "#newQuireModal" } %>
     </div>
   </div>
 
