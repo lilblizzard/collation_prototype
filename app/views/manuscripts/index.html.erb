@@ -1,11 +1,14 @@
 <div class="container">
+  <ol class="breadcrumb">
+    <%= render 'manuscripts/bread_crumbs' %>
+  </ol>
   <div class="row">
     <div class="col">
       <h2><b>Manuscripts</b></h2>
     </div>
     <div class="col">
       <% if account_signed_in? %>
-        <%= link_to 'New Manuscript', "#", class: "btn btn-success float-right",  data: { toggle: "modal", target: "#newManuscriptModal" } %>
+        <%= link_to 'New Manuscript', "#", class: "btn btn-success float-right", data: {toggle: "modal", target: "#newManuscriptModal"} %>
       <% else %>
         <%= link_to 'Log In to Create a New Manuscript', new_account_session_path, class: "btn btn-success float-right" %>
       <% end %>

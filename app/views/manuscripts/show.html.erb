@@ -1,10 +1,7 @@
-<% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
-<% end %>
-
 <div class="container">
+  <ol class="breadcrumb">
+    <%= render 'manuscripts/bread_crumbs' %>
+  </ol>
   <div class="row">
     <div class="col">
       <strong>Name:</strong>
@@ -24,7 +21,7 @@
     <div class="col">
       <strong>Quires:</strong>
       <%= @manuscript.quires.count %>
-      <%= link_to 'New Quire', "#", class: "btn btn-success float-right",  data: { toggle: "modal", target: "#newQuireModal" } %>
+      <%= link_to 'New Quire', "#", class: "btn btn-success float-right", data: {toggle: "modal", target: "#newQuireModal"} %>
     </div>
   </div>
 
