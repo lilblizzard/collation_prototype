@@ -12,6 +12,8 @@ class LeavesController < ApplicationController
   def edit
   end
 
+  # TODO update the redirects, as they still reflect redirecting like quires
+
   def create
     @leaf = @quire.leaves.build leaf_params
 
