@@ -2,6 +2,8 @@ class Manuscript < ApplicationRecord
   belongs_to :account
   has_many :quires, dependent: :destroy
 
+  # attr_accessor allows us access to this
+  # parameter (coming from the form), in our model
   attr_accessor :quire_count
 
   after_save :create_quires
@@ -14,7 +16,5 @@ class Manuscript < ApplicationRecord
         quires.create
       end
     end
-      # self.quire_count = nil
   end
-
 end

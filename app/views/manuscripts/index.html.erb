@@ -1,7 +1,5 @@
 <div class="container">
-  <ol class="breadcrumb">
-    <%= render 'manuscripts/bread_crumbs' %>
-  </ol>
+  <%= render 'manuscripts/bread_crumbs' %>
   <div class="row">
     <div class="col">
       <h2><b>Manuscripts</b></h2>
@@ -37,7 +35,7 @@
           <td><%= manuscript.quires.count %></td>
           <td>
             <%= link_to '<i class="fas fa-eye"></i>'.html_safe, manuscript, class: "btn btn-outline-success" %>
-            <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(manuscript.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#editManuscriptModal'} %>
+            <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(manuscript.id), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#editManuscriptModal', class: "btn btn-outline-warning"} %>
             <%= link_to '<i class="fas fa-trash"></i>'.html_safe, manuscript, class: "btn btn-outline-danger", method: :delete, data: {confirm: 'Are you sure?'} %>
           </td>
         </tr>
