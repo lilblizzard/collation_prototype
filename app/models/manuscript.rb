@@ -13,7 +13,7 @@ class Manuscript < ApplicationRecord
   def create_quires
     if quire_count.present?
       quire_count.to_i.times do
-        quires.create
+        quires.create!
       end
     end
   end
