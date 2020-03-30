@@ -4,6 +4,7 @@
     <tr>
       <th>Leaf number</th>
       <th>Single</th>
+      <th>Conjoin</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -17,6 +18,7 @@
         <% else %>
           <td>No</td>
         <% end %>
+        <td><%= @leaf_position %></td>
         <td>
           <%= link_to '<i class="fas fa-eye"></i>'.html_safe, quire_leaf_path(@quire, leaf), class: "btn btn-outline-success" %>
           <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_quire_leaf_path(@quire, leaf), class: "btn btn-outline-primary" %>
