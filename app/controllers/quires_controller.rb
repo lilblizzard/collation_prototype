@@ -13,7 +13,7 @@ class QuiresController < ApplicationController
   end
 
   def create
-    @quire = @manuscript.quires.build quire_params
+    @quire = @manuscript.quires.build(quire_params)
 
     if @quire.save
       flash[:success] = "Quire created successfully."
@@ -49,7 +49,7 @@ class QuiresController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def quire_params
-    params.permit(:leaf_count)
+    params.require(:quire).permit(:leaf_count)
   end
 
   def set_manuscript

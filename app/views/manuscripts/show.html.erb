@@ -7,32 +7,13 @@
       </h3>
       <h5><%= @manuscript.shelfmark %></h5>
       <h5><%= @manuscript.date %></h5>
+      <h5>Quires: <%= @manuscript.quires.count %></h5>
+      <%= link_to 'New Quire', new_manuscript_quire_path(@manuscript), class: "btn btn-success" %>
     </div>
   </div>
-
   <div class="row">
     <div class="col">
-
-    </div>
-  </div>
-
-  <div class="row mt-2">
-    <div class="col">
-      <strong>Quires:</strong>
-      <%= @manuscript.quires.count %>
-      <%= link_to 'New Quire', new_manuscript_quire_path(@manuscript), class: "btn btn-success float-right" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <%= render 'quire_table' %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <%= render 'quire_table' %>
+      <%= render 'quire_table' if @manuscript.quires.count > 0 %>
     </div>
   </div>
 </div>
