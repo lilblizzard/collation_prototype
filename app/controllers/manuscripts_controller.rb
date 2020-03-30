@@ -19,10 +19,6 @@ class ManuscriptsController < ApplicationController
 
   # GET /manuscripts/1/edit
   def edit
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   # POST /manuscripts
@@ -34,7 +30,7 @@ class ManuscriptsController < ApplicationController
       flash[:success] = "Manuscript created successfully."
       redirect_to @manuscript
     else
-      flash[:danger]
+      flash[:danger] = "Something went wrong..."
       redirect_to new_manuscript_path
     end
   end

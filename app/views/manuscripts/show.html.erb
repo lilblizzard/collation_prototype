@@ -19,11 +19,9 @@
     <div class="col">
       <strong>Quires:</strong>
       <%= @manuscript.quires.count %>
-      <%= link_to 'New Quire', "#", class: "btn btn-success float-right", data: {toggle: "modal", target: "#newQuireModal"} %>
+      <%= link_to 'New Quire', new_manuscript_quire_path(@manuscript), class: "btn btn-success float-right" %>
     </div>
   </div>
-
-  <%= render 'quires/new_quire_modal' %>
 
   <div class="row">
     <div class="col">
