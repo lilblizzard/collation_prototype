@@ -2,16 +2,17 @@
   <%= render 'manuscripts/bread_crumbs' %>
   <div class="row">
     <div class="col">
-      <strong>Name:</strong>
-      <%= @manuscript.name %>
-      <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(@manuscript), class: 'btn btn-warning' %>
+      <h3>
+        <strong><%= @manuscript.name %> <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(@manuscript), class: 'btn btn-warning' %></strong>
+      </h3>
+      <h5><%= @manuscript.shelfmark %></h5>
+      <h5><%= @manuscript.date %></h5>
     </div>
   </div>
 
   <div class="row">
     <div class="col">
-      <strong>Shelfmark:</strong>
-      <%= @manuscript.shelfmark %>
+
     </div>
   </div>
 
