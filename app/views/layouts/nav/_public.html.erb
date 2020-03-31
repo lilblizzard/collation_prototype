@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <div class="container">
     <%= link_to "VisColl", manuscripts_path, class: "navbar-brand" %>
+    <%= render_breadcrumbs :separator => ' / ' %>
 
     <div class="collapse navbar-collapse container-md" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">

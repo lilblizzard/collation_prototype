@@ -10,15 +10,18 @@ class ManuscriptsController < ApplicationController
   # GET /manuscripts/1
   # GET /manuscripts/1.json
   def show
+    add_breadcrumb @manuscript.name, @manuscript
   end
 
   # GET /manuscripts/new
   def new
     @manuscript = current_account.manuscripts.build
+    add_breadcrumb "New Manuscript", new_manuscript_path
   end
 
   # GET /manuscripts/1/edit
   def edit
+    add_breadcrumb "Edit Manuscript", edit_manuscript_path
   end
 
   # POST /manuscripts

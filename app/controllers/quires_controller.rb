@@ -3,13 +3,16 @@ class QuiresController < ApplicationController
   before_action :set_quire, only: [:show, :edit, :update, :destroy]
 
   def show
+    add_breadcrumb "Quire", manuscript_quire_path(@manuscript)
   end
 
   def new
     @quire = @manuscript.quires.build
+    add_breadcrumb "New Quire", new_manuscript_quire_path
   end
 
   def edit
+    add_breadcrumb "Edit Quire", edit_manuscript_quire_path
   end
 
   def create
