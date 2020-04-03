@@ -12,7 +12,7 @@ class Quire < ApplicationRecord
 
   def create_leaves
     if leaf_count.present?
-      (0..leaf_count.to_i).each do |leaf|
+      (1..leaf_count.to_i).each do
         leaves.create
       end
     end
@@ -22,7 +22,6 @@ class Quire < ApplicationRecord
     leaves.each_with_index do |leaf, index|
       leaf.position = index + 1
       leaf.opposite = leaves.size - index
-      binding.pry
     end
   end
 end

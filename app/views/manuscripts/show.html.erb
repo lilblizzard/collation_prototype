@@ -3,8 +3,9 @@
   <div class="row">
     <div class="col">
       <h3>
-        <strong><%= @manuscript.name %> <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(@manuscript), class: 'btn btn-warning' %></strong>
+        <strong><%= @manuscript.name %></strong><%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_manuscript_path(@manuscript), class: 'btn btn-warning' %>
       </h3>
+      <h5><%= link_to 'Generate XML', manuscript_path(@manuscript, :format => 'xml'), class: 'btn btn-success' %></h5>
       <h5><%= @manuscript.shelfmark %></h5>
       <h5><%= @manuscript.date %></h5>
       <h5>Quires: <%= @manuscript.quires.count %></h5>

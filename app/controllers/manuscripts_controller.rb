@@ -11,6 +11,16 @@ class ManuscriptsController < ApplicationController
   # GET /manuscripts/1.json
   def show
     add_breadcrumb @manuscript.name, @manuscript
+    def show
+      @manuscript = Manuscript.find params[:id]
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml do
+          xml = @manuscript.create_xml(@manuscript.name, @manuscript.shelfmark, @manuscript.date)
+          send_data xml
+        end
+      end
+    end
   end
 
   # GET /manuscripts/new

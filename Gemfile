@@ -28,6 +28,7 @@ gem 'devise'
 gem 'font_awesome5_rails'
 gem 'pry'
 gem 'breadcrumbs_on_rails'
+gem 'nokogiri'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
