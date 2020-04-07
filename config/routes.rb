@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :quires, except: [:index]
   end
   resources :quires do
-    resources :leaves, except: [:index]
+    resources :leaves, only: [:edit]
   end
   devise_for :accounts
 end
