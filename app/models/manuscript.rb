@@ -17,7 +17,7 @@ class Manuscript < ApplicationRecord
 
         xml.quires {
           quires.each do |quire|
-            xml.quire('xml:id': quire.xml_id)
+            xml.quire('xml:id': quire.xml_id, position: "#{quire.position}")
           end
         }
         xml.leaves {
