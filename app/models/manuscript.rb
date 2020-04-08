@@ -22,7 +22,13 @@ class Manuscript < ApplicationRecord
         }
         xml.leaves {
           leaves.each_with_index do |leaf, index|
-            xml.leaf(target: "##{leaf.quire.xml_id}", folio_number: "#{index + 1}", position: "#{leaf.position}")
+            xml.leaf(target: "##{leaf.quire.xml_id}",
+                     folio_number: "#{index + 1}",
+                     position: "#{leaf.position}",
+                     single: "#{leaf.single}",
+                     mode: "#{leaf.mode}")
+
+
           end
         }
       }

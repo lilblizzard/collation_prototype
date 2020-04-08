@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_200354) do
+ActiveRecord::Schema.define(version: 2020_04_08_145822) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_200354) do
     t.bigint "quire_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "single"
+    t.boolean "single", default: false
     t.integer "position"
     t.integer "opposite"
     t.string "mode", default: "original"

@@ -1,6 +1,6 @@
 class LeavesController < ApplicationController
-  before_action :set_quire, only: [:new, :create, :show]
-  before_action :set_leaf, only: [:show, :edit, :update, :destroy]
+  before_action :set_leaf
+  before_action :set_quire
 
   def show
   end
@@ -19,7 +19,7 @@ class LeavesController < ApplicationController
 
     if @leaf.save
       flash[:success] = "Leaf created successfully."
-      redirect_to @quire.manuscript
+      redirect_to @quire
     else
       flash[:danger] = "Something went wrong."
       redirect_to new_quires_leaf_path(@quire)
@@ -29,7 +29,7 @@ class LeavesController < ApplicationController
   def update
     if @leaf.update(leaf_params)
       flash[:success] = "Leaf updated successfully."
-      redirect_to @quire.manuscript
+      redirect_to @leaf.quire
     else
       flash[:danger] = "Something went wrong."
       redirect_to edit_quires_leaf_path(@quire)
@@ -39,7 +39,7 @@ class LeavesController < ApplicationController
   def destroy
     @leaf.destroy
     flash[:success] = "Leaf deleted successfully."
-    redirect_to @quire.manuscript
+    redirect_to @leaf.quire
   end
 
   private
@@ -51,11 +51,13 @@ class LeavesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def leaf_params
-    params.require(:leaf).permit(:leaf_count)
+    params.require(:leaf).permit(:single, :mode, :quire_id)
   end
 
-  def set_manuscript
-    @manuscript = Manuscript.find(params[:manuscript_id])
+  # the params return the :quire_id as the same value as the :id (leaf id)
+  def set_quire
+    @quire = @leaf.quire
+    @quire = Quire.find(params[:quire_id])
   end
 end
 

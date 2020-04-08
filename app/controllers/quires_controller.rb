@@ -1,6 +1,6 @@
 class QuiresController < ApplicationController
-  before_action :set_manuscript, only: [:new, :create, :show]
-  before_action :set_quire, only: [:show, :edit, :update, :destroy]
+  before_action :set_quire
+  before_action :set_manuscript
 
   def show
     add_breadcrumb "Quire", manuscript_quire_path(@manuscript)
