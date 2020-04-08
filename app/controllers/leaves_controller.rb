@@ -51,13 +51,13 @@ class LeavesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def leaf_params
-    params.require(:leaf).permit(:single, :mode, :quire_id)
+    params.require(:leaf).permit(:single, :mode)
   end
 
   # the params return the :quire_id as the same value as the :id (leaf id)
   def set_quire
     @quire = @leaf.quire
-    @quire = Quire.find(params[:quire_id])
+      #@quire = Quire.find(params[:quire_id])
   end
 end
 
