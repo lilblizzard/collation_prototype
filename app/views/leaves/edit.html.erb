@@ -1,5 +1,6 @@
 <div class="container">
-  <h1>Edit <%= @leaf.position %></h1>
+  <%= render 'leaves/bread_crumbs' %>
+  <h3>Edit <%= @leaf.position %></h3>
   <%= render 'form', leaf: @leaf %>
 </div>
 

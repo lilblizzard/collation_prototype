@@ -4,23 +4,22 @@
     <tr>
       <th>Leaf number</th>
       <th>Single</th>
-      <th>Conjoin</th>
+      <th>Mode</th>
       <th>Actions</th>
     </tr>
     </thead>
 
     <tbody>
-    <% @quire.leaves.each_with_index do |leaf, index| %>
+    <% @quire.leaves.each do |leaf| %>
       <tr>
-        <td><%= index + 1 %></td>
+        <td><%= leaf.position %></td>
         <% if leaf.single? %>
           <td>Yes</td>
         <% else %>
           <td>No</td>
         <% end %>
-        <td><%= @leaf_position %></td>
+        <td><%= leaf.mode %></td>
         <td>
-          <%= link_to '<i class="fas fa-eye"></i>'.html_safe, quire_leaf_path(@quire, leaf), class: "btn btn-outline-success" %>
           <%= link_to '<i class="fas fa-pen-fancy"></i>'.html_safe, edit_quire_leaf_path(@quire, leaf), class: "btn btn-outline-primary" %>
           <%= link_to '<i class="fas fa-trash"></i>'.html_safe, quire_leaf_path(@quire, leaf), class: "btn btn-outline-danger", method: :delete, data: {confirm: 'Are you sure?'} %>
         </td>
