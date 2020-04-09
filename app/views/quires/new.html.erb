@@ -1,4 +1,5 @@
 <div class="container">
   <h1>New Quire</h1>
-  <%= render 'form', manuscript: @manuscript %>
+  <%= render 'quires/form', manuscript: @manuscript %>
+  <%= javascript_pack_tag 'new_quire' %>
 </div>

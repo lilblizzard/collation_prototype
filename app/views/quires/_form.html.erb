@@ -1,4 +1,4 @@
-<%= form_with(model: @quire, url: manuscript_quires_path(@manuscript), local: true) do |form| %>
+<%= form_with(model: @quire, url: manuscript_quires_path(@manuscript), remote: true) do |form| %>
   <% if @manuscript.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@manuscript.quire.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
@@ -17,6 +17,6 @@
   </div>
 
   <div class="actions pt-2">
-    <%= form.submit 'Create Quire', class: "form-control btn btn-lg btn-primary btn-block" %>
+    <%= form.submit 'Create Quire', class: "form-control btn btn-lg btn-primary btn-block", id: "create" %>
   </div>
 <% end %>
