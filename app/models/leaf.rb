@@ -2,9 +2,9 @@ class Leaf < ApplicationRecord
   belongs_to :quire
   acts_as_list scope: :quire
 
-  MODES = %w( original added replaced missing )
+  MODES = %w( Original Added Replaced Missing )
 
   def xml_id
-    "#{self.quire.id}-#{id}"
+    "leaf-#{id}"
   end
 end

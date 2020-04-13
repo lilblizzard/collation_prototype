@@ -56,7 +56,7 @@ class QuiresController < ApplicationController
   end
 
   def set_manuscript
-    # @manuscript = Manuscript.find(params[:manuscript_id])
-    @manuscript = @quire.manuscript
+    @manuscript = Manuscript.find(params[:manuscript_id])
+    #@manuscript = @quire.manuscriptp
   end
 end
