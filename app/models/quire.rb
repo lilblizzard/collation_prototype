@@ -22,6 +22,7 @@ class Quire < ApplicationRecord
   end
 
   def xml_id
-    "#{self.class.name.underscore}-#{id}"
+    #"#{self.class.name.underscore}-#{id}"
+    "#{id}"
   end
 end

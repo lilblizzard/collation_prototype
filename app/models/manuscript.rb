@@ -21,15 +21,17 @@ class Manuscript < ApplicationRecord
           end
         }
         xml.leaves {
-          leaves.each_with_index do |leaf, index|
-            xml.leaf(target: "##{leaf.quire.xml_id}",
-                     folio_number: "#{index + 1}",
-                     position: "#{leaf.position}",
-                     single: "#{leaf.single}",
-                     mode: "#{leaf.mode}")
-
-
-          end
+          xml.leaves {
+            leaves.each_with_index do |leaf, index|
+              xml.leaf('xml:id': leaf.xml_id) {
+                xml.folio_number('certainty': 1, 'val': index + 1)
+                xml.mode('certainty': 1, 'val': leaf.mode)
+                xml.q('target': "#{leaf.quire.id}", 'position': leaf.position) {
+                  xml.conjoin('certainty': 1, 'target': "TODO")
+                }
+              }
+            end
+          }
         }
       }
     end.to_xml
