@@ -1,0 +1,13 @@
+<%= link_to "Home", root_path %>
+<% unless @manuscript.nil? -%>
+  |
+  <%= link_to @manuscript.shelfmark, @manuscript %>
+<% end %>
+<% unless @quire.nil? -%>
+  |
+  <%= link_to "Quire #{@quire.position}", [@quire.manuscript, @quire] %>
+<% end %>
+<% unless @leaf.nil? -%>
+  |
+  <%= link_to "Leaf #{@leaf.position}", edit_quire_leaf_path(@leaf) %>
+<% end %>

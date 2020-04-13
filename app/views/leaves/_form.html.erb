@@ -1,8 +1,7 @@
-<%= form_with(model: @leaf, url: quire_leaf_path(@leaf), local: true) do |form| %>
+<%= form_with(model: @leaf, url: quire_leaf_path(@quire, @leaf), local: true) do |form| %>
   <% if leaf.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(manuscript.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
-
       <ul>
         <% manuscript.errors.full_messages.each do |message| %>
           <li><%= message %></li>

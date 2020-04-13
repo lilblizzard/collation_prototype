@@ -5,5 +5,5 @@
 <% end %>
 <% unless @quire.nil? -%>
   |
-  <%= link_to "Quire #{@quire.position}", @quire %>
+  <%= link_to "Quire #{@quire.position}", [@manuscript, @quire] %>
 <% end %>

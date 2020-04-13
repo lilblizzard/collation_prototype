@@ -29,7 +29,7 @@ class LeavesController < ApplicationController
   def update
     if @leaf.update(leaf_params)
       flash[:success] = "Leaf updated successfully."
-      redirect_to @leaf.quire
+      redirect_to [@quire.manuscript, @quire]
     else
       flash[:danger] = "Something went wrong."
       redirect_to edit_quires_leaf_path(@quire)
@@ -39,7 +39,7 @@ class LeavesController < ApplicationController
   def destroy
     @leaf.destroy
     flash[:success] = "Leaf deleted successfully."
-    redirect_to @leaf.quire
+    redirect_to [@quire.manuscript, @quire]
   end
 
   private
@@ -56,8 +56,6 @@ class LeavesController < ApplicationController
 
   # the params return the :quire_id as the same value as the :id (leaf id)
   def set_quire
-    @quire = @leaf.quire
-      #@quire = Quire.find(params[:quire_id])
+    @quire = Quire.find(params[:quire_id])
   end
 end
-
