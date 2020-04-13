@@ -1,6 +1,6 @@
 class QuiresController < ApplicationController
-  before_action :set_manuscript, only: [:new, :create, :show]
   before_action :set_quire, only: [:show, :edit, :update, :destroy]
+  before_action :set_manuscript, only: [:new, :create, :show]
 
   def show
     add_breadcrumb "Quire", manuscript_quire_path(@manuscript)
@@ -56,6 +56,7 @@ class QuiresController < ApplicationController
   end
 
   def set_manuscript
-    @manuscript = Manuscript.find(params[:manuscript_id])
+    # @manuscript = Manuscript.find(params[:manuscript_id])
+    @manuscript = @quire.manuscript
   end
 end

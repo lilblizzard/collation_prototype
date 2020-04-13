@@ -11,14 +11,12 @@ class ManuscriptsController < ApplicationController
   # GET /manuscripts/1.json
   def show
     add_breadcrumb @manuscript.name, @manuscript
-    def show
-      @manuscript = Manuscript.find params[:id]
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml do
-          xml = @manuscript.create_xml(@manuscript.name, @manuscript.shelfmark, @manuscript.date)
-          send_data xml
-        end
+    @manuscript = Manuscript.find params[:id]
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml do
+        xml = @manuscript.create_xml(@manuscript.name, @manuscript.shelfmark, @manuscript.date)
+        send_data xml
       end
     end
   end
@@ -65,7 +63,7 @@ class ManuscriptsController < ApplicationController
   def destroy
     @manuscript.destroy
     flash[:success] = "Manuscript deleted successfully."
-      redirect_to manuscripts_url
+    redirect_to manuscripts_url
   end
 
   private
