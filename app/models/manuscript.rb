@@ -17,6 +17,7 @@ class Manuscript < ApplicationRecord
 
         xml.quires {
           quires.each do |quire|
+            quire.set_conjoins quire.units
             xml.quire('xml:id': quire.xml_id, position: "#{quire.position}")
           end
         }
@@ -26,9 +27,15 @@ class Manuscript < ApplicationRecord
               xml.folio_number('certainty': 1, 'val': index + 1)
               xml.mode('certainty': 1, 'val': leaf.mode)
               xml.q('target': "##{leaf.quire.xml_id}", 'position': leaf.position) {
-                xml.conjoin('certainty': 1, 'target': "TODO")
+                xml.conjoin('certainty': 1, 'target': leaf.conjoin)
               }
             }
+          end
+        }
+        xml.test {
+          quires.each do |quire|
+            units = quire.units
+            xml.units units
           end
         }
       }

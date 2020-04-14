@@ -24,4 +24,30 @@ class Quire < ApplicationRecord
   def xml_id
     "quire-#{id}"
   end
+
+  def units
+    units = []
+    leaf_queue = leaves.map &:itself
+    while leaf_queue.count > 0
+      leaf = leaf_queue.shift
+      opposite = leaf_queue.pop
+      if opposite.nil?
+        units << [leaf]
+      else
+        units << [leaf, opposite]
+      end
+    end
+    units
+  end
+
+  def set_conjoins(units)
+    units.each do |unit|
+      if unit[1].nil?
+        unit[0].conjoin = nil
+      else
+        unit[0].conjoin = unit[1]
+        unit[1].conjoin = unit[0]
+      end
+    end
+  end
 end
