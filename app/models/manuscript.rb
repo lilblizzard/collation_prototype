@@ -17,25 +17,24 @@ class Manuscript < ApplicationRecord
 
         xml.quires {
           quires.each do |quire|
-            quire.set_conjoins quire.units
+            units_hash = quire.units
             xml.quire('xml:id': quire.xml_id, position: "#{quire.position}")
           end
         }
         xml.leaves {
-          leaves.each_with_index do |leaf, index|
-            xml.leaf('xml:id': leaf.xml_id) {
-              xml.folio_number('certainty': 1, 'val': index + 1)
-              xml.mode('certainty': 1, 'val': leaf.mode)
-              xml.q('target': "##{leaf.quire.xml_id}", 'position': leaf.position) {
-                xml.conjoin('certainty': 1, 'target': leaf.conjoin)
-              }
-            }
-          end
-        }
-        xml.test {
           quires.each do |quire|
-            units = quire.units
-            xml.units units
+            units_hash = quire.units
+            quire.leaves.each_with_index do |leaf, index|
+              xml.leaf('xml:id': leaf.xml_id) {
+                xml.folio_number('certainty': 1, 'val': index + 1)
+                xml.mode('certainty': 1, 'val': leaf.mode)
+                xml.q('target': "##{leaf.quire.xml_id}", 'position': leaf.position) {
+                  if units_hash[leaf]
+                    xml.conjoin('certainty': 1, 'target': "##{units_hash[leaf].xml_id}")
+                  end
+                }
+              }
+            end
           end
         }
       }

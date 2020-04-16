@@ -1,6 +1,6 @@
 class QuiresController < ApplicationController
-  before_action :set_quire, only: [:show, :edit, :update, :destroy]
-  before_action :set_manuscript, only: [:new, :create, :show]
+  before_action :set_quire, only: [:new, :edit, :update, :create, :show]
+  before_action :set_manuscript, only: [:new, :edit, :update, :create, :show]
 
   def show
     add_breadcrumb "Quire", manuscript_quire_path(@manuscript)
@@ -52,7 +52,7 @@ class QuiresController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def quire_params
-    params.require(:quire).permit(:leaf_count)
+    params.require(:quire).permit(:leaf_count, leaves_attributes: [:id, :single, :_destroy])
   end
 
   def set_manuscript

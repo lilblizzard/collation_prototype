@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Edit Quire</h1>
+  <%= form_with(model: @quire, url: manuscript_quire_path(@manuscript, @quire)) do |form| %> <% if @quire.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@quire.quire.errors.count, "error") %> prohibited this
+          manuscript from being saved:
+        </h2>
+        <ul>
+          <% @quire.quire.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="leaf-fields">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Leaf number</th>
+            <th>Mode</th>
+            <th>Single</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= form.fields_for :leaves do |leaf| %> <%= render 'leaf_fields', leaf: leaf %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions pt-2">
+      <%= form.submit 'Update Quire', class: "form-control btn btn-lg btn-primary
+    btn-block", id: "submit" %>
+    </div>
+  <% end %>
+</div>
