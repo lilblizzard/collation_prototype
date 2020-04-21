@@ -32,8 +32,7 @@ class QuiresController < ApplicationController
       flash[:success] = "Quire updated successfully."
       redirect_to @quire.manuscript
     else
-      flash[:danger] = "Something went wrong."
-      redirect_to edit_manuscript_quire_path(@manuscript)
+      render "edit"
     end
   end
 

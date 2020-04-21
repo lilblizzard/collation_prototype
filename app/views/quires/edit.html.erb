@@ -1,18 +1,19 @@
 <div class="container">
   <h1>Edit Quire</h1>
-  <%= form_with(model: @quire, url: manuscript_quire_path(@manuscript, @quire)) do |form| %> <% if @quire.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@quire.quire.errors.count, "error") %> prohibited this
-          manuscript from being saved:
-        </h2>
-        <ul>
-          <% @quire.quire.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <% if @quire.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@quire.errors.count, "error") %> prohibited this
+        manuscript from being saved:
+      </h2>
+      <ul>
+        <% @quire.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_with(model: @quire, url: manuscript_quire_path(@manuscript, @quire), local: true) do |form| %>
     <div class="leaf-fields">
       <table class="table table-hover">
         <thead>
